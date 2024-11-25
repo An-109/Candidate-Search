@@ -57,5 +57,5 @@ The Candidate Search is meant for finding potentials employees for anything comp
 
 
 - **Live Application URL**: [Candidate Search](<>)
-- **GitHub Repository**: [Candidate Search]([<(https://github.com/An-109/Candidate-Search)>])
+- **GitHub Repository**: [Candidate Search](ttps://github.com/An-109/Candidate-Search)
 
