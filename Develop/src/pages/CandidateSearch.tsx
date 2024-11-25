@@ -6,23 +6,28 @@ import {Candidate} from '../interfaces/Candidate.interface'
 const CandidateSearch = () => {
 
     const [candidates, setCandidates] = useState<Candidate[]>([]);
-    const [currentCandidate, setCurrentCandidate]= useState({});
+    const [currentCandidate, setCurrentCandidate]= useState<Candidate>({
+      id: 0,
+      login:"",
+      email:"",
+      avatar_url: "",
+      location:"",
+    company:"",
+    bio:""
+    });
 
     const [currentIndex, setCurrentIndex] = useState(-1)
 
     useEffect(()=>{
       const fetchGithub = async()=>{
         const data = await searchGithub();
-        const candidateArr: Candidate[] = data.map((candidate:any) => {
-          return {
-            id: candidate.id,
-            login:candidate.login,
-            email:candidate.email,
-            avatar: candidate.avatar_url
-          }
+        // const candidateArr: Candidate[] = data.map((candidate:any) => {
+        //   return {
+            
+        //   }
 
-        }) 
-        setCandidates(candidateArr);
+        // }) 
+        setCandidates(data);
         setCurrentIndex(0)
       }
       fetchGithub();
@@ -61,9 +66,9 @@ const CandidateSearch = () => {
       <div>
       <img src={currentCandidate.avatar_url} alt={currentCandidate.login} />
         <h2>Username: {currentCandidate.login}</h2>
-        <h2>Location: {currentCandidate.location}</h2>
-        <h2>Company: {currentCandidate.company}</h2>
-        <h2>Bio: {currentCandidate.bio}</h2>
+        <h2>Location: {currentCandidate.location ==null? 'n/a': currentCandidate.location}</h2>
+        <h2>Company: {currentCandidate.company==null? 'n/a': currentCandidate.company}</h2>
+        <h2>Bio: {currentCandidate.bio ==null? 'n/a': currentCandidate.bio}</h2>
         <button onClick={minusClick}>Minus</button>
         <button onClick={plusClick}>Plus</button>
       </div>
